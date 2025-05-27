@@ -241,8 +241,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f16c4d6bc60693749b7cfe07c834f450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dodgeSpeed: 10
-  rollSpeed: 7
+  dodgeSpeed: 8
+  rollSpeed: 5
+  horizMovement: 0
+  swipeMove: 2
+  minSwipeDistance: 0.25
+  minScale: 0.5
+  maxScale: 3
 --- !u!54 &657013061
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -524,7 +529,7 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1607624435}
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 657013059}
-  - {fileID: 1607624435}
