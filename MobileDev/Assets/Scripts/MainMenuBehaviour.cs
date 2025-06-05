@@ -12,4 +12,4 @@ public class MainMenuBehaviour : MonoBehaviour
     {
         SceneManager.LoadScene(levelName);
     }
-}
+}   
