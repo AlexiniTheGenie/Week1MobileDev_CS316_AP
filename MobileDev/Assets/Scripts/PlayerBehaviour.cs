@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro; //TextMeshProUGUI
 
 /// <summary>
 /// Responsible for moving the player automatically and
@@ -62,6 +63,42 @@ public class PlayerBehaviour : MonoBehaviour
 
     private MobileJoystick joystick;
 
+    [Header("Object References")]
+    public TextMeshProUGUI scoreText;
+
+    private float score = 0;
+    public float Score
+    {
+        get
+        {
+            return score;
+        }
+        set
+        {
+            score = value;
+
+            /* Check if scoreText has been assigned */
+            if (scoreText == null)
+            {
+
+                Debug.LogError("Score Text is not set. " +
+                "Please go to the Inspector and assign it");
+                /* If not assigned, don't try to update it. */
+                return;
+            }
+            
+            /* Update the text to display the whole number portion of the score */
+            int cleanScore = (int)score;
+            scoreText.text = cleanScore.ToString();
+
+            // finally, SAVE the highscore if its higher than we have saved
+            if (cleanScore > PlayerPrefs.GetInt("score"))
+            {
+                PlayerPrefs.SetInt("score", cleanScore);
+            }
+        }
+    }
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -72,6 +109,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         joystick = GameObject.FindObjectOfType<MobileJoystick>();
 
+        Score = 0;
     }
 
     /// <summary>
@@ -86,6 +124,8 @@ public class PlayerBehaviour : MonoBehaviour
         {
             return;
         }
+
+        Score += Time.deltaTime;
 
         // Check if we're moving to the side
         var horizontalSpeed = Input.GetAxis("Horizontal") *

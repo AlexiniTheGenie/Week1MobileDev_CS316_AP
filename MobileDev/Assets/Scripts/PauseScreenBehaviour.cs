@@ -13,6 +13,12 @@ public class PauseScreenBehaviour : MainMenuBehaviour
 
     [Tooltip("Reference to the on screen controls menu")]
     public GameObject onScreenControls;
+    void Start()
+    {
+        /* Must be reset in Start or else game will be paused upon
+         * restart */
+        SetPauseMenu(false);
+    }
 
     /// <summary>
     /// Reloads our current level, effectively "restarting" the
@@ -38,10 +44,5 @@ public class PauseScreenBehaviour : MainMenuBehaviour
         onScreenControls.SetActive(!paused);
     }
 
-    void Start()
-    {
-        /* Must be reset in Start or else game will be paused upon
-         * restart */
-        SetPauseMenu(false);
-    }
+    
 }
