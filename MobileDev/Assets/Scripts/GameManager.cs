@@ -48,6 +48,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void Update()
+    {
+        startPoint = new Vector3(Random.Range(5, 50), Random.Range(5, 50), -5);
+    }
 
     /// <summary>
     /// Will spawn a tile at a certain location and setup the next
